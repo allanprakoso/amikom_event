@@ -1,7 +1,7 @@
 {
     "connectionLimit" : 10,
-    "host": "0.0.0.0",
+    "host": "localhost",
     "user": "root",
     "password": "admin123",
-    "database": "petani_kopi"
+    "database": "amikom_event"
 }
