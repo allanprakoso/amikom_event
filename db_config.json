@@ -1,6 +1,6 @@
 {
     "connectionLimit" : 10,
-    "host": "localhost",
+    "host": "0.0.0.0",
     "user": "root",
     "password": "admin123",
     "database": "amikom_event"
