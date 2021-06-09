@@ -22,14 +22,18 @@ Event.create = async (newEvent) => {
 Event.getall = async (param) => {
     let result
     if (param == 0) {
+        console.log('past')
         result = await connection.awaitQuery(`
         SELECT events.id, events.judul, events.deskripsi, 
         events.tanggal, events.urlEvent, events.urlImage, 
         kategori.nama as kategori , events.idKategori 
         FROM events INNER JOIN kategori 
-        ON events.idKategori = kategori.id WHERE events.tanggal < (SELECT NOW() AS DATETIME)`);
+        ON events.idKategori = kategori.id WHERE 
+        events.id NOT IN 
+        (select id from events where tanggal > (SELECT NOW() AS DATETIME))`);
     }
     if (param == 1) {
+        console.log('upcoming')
         result = await connection.awaitQuery(`
         SELECT events.id, events.judul, events.deskripsi, 
         events.tanggal, events.urlEvent, events.urlImage, 
