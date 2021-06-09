@@ -22,8 +22,7 @@ Event.create = async (newEvent) => {
 Event.getall = async (param) => {
     let result
     if (param == 0) {
-        console.log('past')
-        result = await connection.awaitQuery(`
+        return await connection.awaitQuery(`
         SELECT events.id, events.judul, events.deskripsi, 
         events.tanggal, events.urlEvent, events.urlImage, 
         kategori.nama as kategori , events.idKategori 
@@ -43,11 +42,10 @@ Event.getall = async (param) => {
     }
     else {
         result = await connection.awaitQuery(`
-    SELECT events.id, events.judul, events.deskripsi, 
-    events.tanggal, events.urlEvent, events.urlImage, 
-    kategori.nama as kategori , events.idKategori 
-    FROM events INNER JOIN kategori 
-    ON events.idKategori = kategori.id`);
+        SELECT events.id, events.judul, events.deskripsi, 
+        events.tanggal, events.urlEvent, events.urlImage, 
+        kategori.nama as kategori , events.idKategori FROM 
+        events INNER JOIN kategori ON events.idKategori = kategori.id`);
     }
     return result;
 }
