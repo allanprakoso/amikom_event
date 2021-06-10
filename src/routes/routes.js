@@ -72,7 +72,7 @@ const routes = [
     {
         method: 'GET',
         path: '/event/{id}/peserta',
-        handler: getAllPeserta
+        handler: getPesertaById
     },
 
     {
@@ -83,16 +83,16 @@ const routes = [
 
     {
         method: 'GET',
-        path: '/tugas',
+        path: '/api-doc',
         handler: function (request, h) {
-            return h.file('tugas.html');
+            return h.file('apidoc.html');
         }
     },
     {
         method: 'GET',
-        path: '/tugas.js',
+        path: '/apidoc.js',
         handler: function (request, h) {
-            return h.file('tugas.js');
+            return h.file('apidoc.js');
         }
     }
 

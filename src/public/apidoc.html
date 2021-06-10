@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://jsonplaceholder.typicode.com/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-tomorrow.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-
+            BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <script src="apidoc.js"></script>
+
+    <title>Amikom Event Api</title>
+</head>
+
+<body>
+    <div id="datajson">
+        <section class="container mx-auto max-w-4xl mb-four">
+            <h3 class="text-2xl mb-one">Data Kategori</h3>
+            <p><b>GET</b> <code>http://13.229.63.55:5000/kategori</code></p>
+            <p>Response :</p>
+            <pre id="getkategoriresponse" class=" language-javascript mb-two">
+            </pre>
+
+            <hr class="mt-two mb-one" />
+            <p><b>POST</b> <code>http://13.229.63.55:5000/kategori</code></p>
+            <p>Request :</p>
+            <pre id="reqpostkategori" class=" language-javascript mb-two">
+            </pre>
+            <p>Response :</p>
+            <pre id="respostkategori" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+
+            <p><b>PUT</b> <code>http://13.229.63.55:5000/kategori</code></p>
+            <p>Request :</p>
+            <pre id="reqputkategori" class=" language-javascript mb-two">
+            </pre>
+            <p>Response :</p>
+            <pre id="resputkategori" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+
+            <p><b>DELETE</b> <code>http://13.229.63.55:5000/kategori/32</code></p>
+            <p>Response :</p>
+            <pre id="resdeletekategori" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+        </section>
+        <section class="container mx-auto max-w-4xl mb-four">
+            <h3 class="text-2xl mb-one">Data Event</h3>
+            <p><b>GET</b> <code>http://13.229.63.55:5000/event</code></p>
+            <p>Response :</p>
+            <pre id="geteventresponse" class=" language-javascript mb-two">
+            </pre>
+
+            <hr class="mt-two mb-one" />
+
+            <p><b>GET</b> <code>http://13.229.63.55:5000/event/1</code></p>
+            <p>Response :</p>
+            <pre id="geteventidresponse" class=" language-javascript mb-two">
+            </pre>
+
+            <hr class="mt-two mb-one" />
+            <p><b>POST</b> <code>http://13.229.63.55:5000/event</code></p>
+            <p>Request :</p>
+            <pre id="reqpostevent" class=" language-javascript mb-two">
+            </pre>
+            <p>Response :</p>
+            <pre id="respostevent" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+
+            <p><b>PUT</b> <code>http://13.229.63.55:5000/event/1</code></p>
+            <p>Request :</p>
+            <pre id="reqputevent" class=" language-javascript mb-two">
+            </pre>
+            <p>Response :</p>
+            <pre id="resputevent" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+
+            <p><b>DELETE</b> <code>http://13.229.63.55:5000/event/1</code></p>
+            <p>Response :</p>
+            <pre id="resdeleteevent" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+        </section>
+
+        <section class="container mx-auto max-w-4xl mb-four">
+            <h3 class="text-2xl mb-one">Data Peserta</h3>
+
+            <p><b>POST</b> <code>http://13.229.63.55:5000/event/1/peserta</code></p>
+            <p>Request :</p>
+            <pre id="reqpostpeserta" class=" language-javascript mb-two">
+            </pre>
+            <p>Response :</p>
+            <pre id="respostpeserta" class=" language-javascript mb-two">
+            </pre>
+            <hr class="mt-two mb-one" />
+
+            <p><b>GET</b> <code>http://13.229.63.55:5000/event/1/peserta</code></p>
+            <p>Response :</p>
+            <pre id="getpesertaresponse" class=" language-javascript mb-two">
+            </pre>
+
+            <hr class="mt-two mb-one" />
+        </section>
+    </div>
+</body>
+
+</html>
