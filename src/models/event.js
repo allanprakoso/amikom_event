@@ -19,35 +19,32 @@ Event.create = async (newEvent) => {
     }
 }
 
-Event.getall = async (param) => {
-    let result
-    if (param == 0) {
+Event.getall = async (param, admin) => {
+    if (admin) {
         return await connection.awaitQuery(`
-        SELECT events.id, events.judul, events.deskripsi, 
-        events.tanggal, events.urlEvent, events.urlImage, 
-        kategori.nama as kategori , events.idKategori 
-        FROM events INNER JOIN kategori 
-        ON events.idKategori = kategori.id WHERE 
-        events.id NOT IN 
-        (select id from events where tanggal > (SELECT NOW() AS DATETIME))`);
+        SELECT events.id, events.judul, events.urlImage , 
+        kategori.nama as kategori, events.idKategori , 
+        (SELECT COUNT(id) from peserta where peserta.idEvent=events.id) as peserta 
+        FROM events INNER JOIN kategori ON events.idKategori = kategori.id`);
+    } else {
+        if (param == 0) {
+            return await connection.awaitQuery(`
+            SELECT id, judul, deskripsi, tanggal, urlImage , idKategori
+            FROM events WHERE id NOT IN 
+            (select id from events where tanggal > (SELECT NOW() AS DATETIME))`);
+        }
+        if (param == 1) {
+            return await connection.awaitQuery(`
+            SELECT id, judul, deskripsi, tanggal, urlImage , idKategori
+            FROM events  WHERE tanggal > (SELECT NOW() AS DATETIME)`);
+        }
+        else {
+            return await connection.awaitQuery(`
+            SELECT id, judul, deskripsi, tanggal, urlImage , idKategori
+            FROM events`);
+        }
     }
-    if (param == 1) {
-        console.log('upcoming')
-        result = await connection.awaitQuery(`
-        SELECT events.id, events.judul, events.deskripsi, 
-        events.tanggal, events.urlEvent, events.urlImage, 
-        kategori.nama as kategori , events.idKategori 
-        FROM events INNER JOIN kategori 
-        ON events.idKategori = kategori.id WHERE events.tanggal > (SELECT NOW() AS DATETIME)`);
-    }
-    else {
-        result = await connection.awaitQuery(`
-        SELECT events.id, events.judul, events.deskripsi, 
-        events.tanggal, events.urlEvent, events.urlImage, 
-        kategori.nama as kategori , events.idKategori FROM 
-        events INNER JOIN kategori ON events.idKategori = kategori.id`);
-    }
-    return result;
+
 }
 
 Event.getById = async (id) => {
@@ -79,5 +76,12 @@ Event.updateById = async (editEvent, id) => {
     }
 }
 
+Event.listEventAdmin = async () => {
+    return await connection.awaitQuery(`
+    SELECT events.id, events.judul, events.urlImage , 
+    kategori.nama as kategori, events.idKategori , 
+    (SELECT COUNT(id) from peserta where peserta.idEvent=events.id) as peserta 
+    FROM events INNER JOIN kategori ON events.idKategori = kategori.id`);
+}
 module.exports = Event;
 

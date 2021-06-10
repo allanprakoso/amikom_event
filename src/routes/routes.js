@@ -1,77 +1,83 @@
+const { countEvent, getDataVisitor, postDataVisitor, getAllParticipants } = require("../handlers/adminHandler.js");
 const { addEvent, getAllEvent, getEventById ,updateEventById, deleteEventById } = require("../handlers/eventHandler.js");
 const { addKategori, getAllKategori, getKategoriById, deleteKategoriById, updateKategoriById } = require("../handlers/kategoriHandler.js");
 const { getAllPeserta, getPesertaById, addPeserta } = require("../handlers/pesertaHandler.js");
 const { addUsers, get } = require("../handlers/usersHandler.js");
 
 const routes = [
-    {
-        method: 'POST',
-        path: '/users',
-        handler: addUsers
-    },
-    {
-        method: 'GET',
-        path: '/users',
-        handler: get
-    },
+
     // KATEGORI
     {
         method: 'POST',
-        path: '/kategori',
+        path: '/admin/kategori',
         handler: addKategori
     },
     {
         method: 'GET',
-        path: '/kategori',
+        path: '/admin/kategori',
         handler: getAllKategori
     },
     {
         method: 'GET',
-        path: '/kategori/{id}',
+        path: '/admin/kategori/{id}',
         handler: getKategoriById
     },
     {
         method: 'DELETE',
-        path: '/kategori/{id}',
+        path: '/admin/kategori/{id}',
         handler: deleteKategoriById
     },
     {
         method: 'PUT',
-        path: '/kategori/{id}',
+        path: '/admin/kategori/{id}',
         handler: updateKategoriById
     },
 
     // EVENT
-    {
-        method: 'POST',
-        path: '/event',
-        handler: addEvent
-    },
+
     {
         method: 'GET',
         path: '/event',
         handler: getAllEvent
     },
-
     {
         method: 'GET',
         path: '/event/{id}',
         handler: getEventById
     },
+
+    {
+        method: 'GET',
+        path: '/admin/event/{id}',
+        handler: getEventById
+    },
+
+    {
+        method: 'POST',
+        path: '/admin/event',
+        handler: addEvent
+    },
+    {
+        method: 'GET',
+        path: '/{admin}/event',
+        handler: getAllEvent
+    },
+
     {
         method: 'DELETE',
-        path: '/event/{id}',
+        path: '/admin/event/{id}',
         handler: deleteEventById
     },
     {
         method: 'PUT',
-        path: '/event/{id}',
+        path: '/admin/event/{id}',
         handler: updateEventById
     },
 
+    // Peserta
     {
         method: 'GET',
-        path: '/event/{id}/peserta',
+        path: '/admin/event/{id}/peserta',
         handler: getPesertaById
     },
 
@@ -80,7 +86,6 @@ const routes = [
         path: '/event/{idEvent}/peserta',
         handler: addPeserta
     },
-
     {
         method: 'GET',
         path: '/api-doc',
@@ -94,8 +99,31 @@ const routes = [
         handler: function (request, h) {
             return h.file('apidoc.js');
         }
+    },
+
+    // ADMIN
+    {
+        method: 'GET',
+        path: '/admin/data/event',
+        handler: countEvent
+    },
+    {
+        method: 'GET',
+        path: '/admin/data/visitor',
+        handler: getDataVisitor
+    },
+    {
+        method: 'POST',
+        path: '/admin/data/visitor',
+        handler: postDataVisitor
+    },
+    {
+        method: 'GET',
+        path: '/admin/data/participans',
+        handler: getAllParticipants
     }
+
 
 ]
 
-module.exports = routes;
+module.exports = routes
