@@ -44,7 +44,6 @@ Event.getall = async (param, admin) => {
             FROM events`);
         }
     }
-
 }
 
 Event.getById = async (id) => {

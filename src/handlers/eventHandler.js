@@ -36,7 +36,6 @@ const getAllEvent = async (request, h) => {
     const {admin} = request.params;
     const data = (admin=='admin') ? await Event.getall(null,true) : (upcoming==1) ? await Event.getall(1) : (upcoming==0) ? await Event.getall(0) : await Event.getall(); 
     eventFiltered = data;
-
     if (search !== undefined) {
         var cari = search.split(" ");
         var i = 0;
@@ -44,9 +43,8 @@ const getAllEvent = async (request, h) => {
         while (true) {
             try {
                 var filteredData = data.filter((data) => data.judul.toLowerCase().includes(cari[i].toLowerCase())
-                    || data.kategori.toLowerCase().includes(cari[i].toLowerCase())
                     || data.deskripsi.toLowerCase().includes(cari[i].toLowerCase()))
-                i++;
+                    i++;
                 if (filteredData[0] !== undefined) {
                     a = 0;
                     while (true) {
@@ -64,6 +62,7 @@ const getAllEvent = async (request, h) => {
                 break;
             }
         }
+        
         eventFiltered = datanya;
     }
     if (kategori !== undefined) {
