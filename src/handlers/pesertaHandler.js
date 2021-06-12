@@ -16,7 +16,7 @@ const addPeserta = async (request, h) => {
     if (isSuccess) {
         const response = h.response({
             status: 'success',
-            message: 'Registrasi Berhasil',
+            message: 'Registrasi Berhasil, Kami telah mengirimkan Tiket Event ke Email Anda',
             data: {
                 idPeserta: isSuccess,
             }
