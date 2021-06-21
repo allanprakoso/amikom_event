@@ -104,7 +104,7 @@ const routes = [
     // ADMIN
     {
         method: 'GET',
-        path: '/admin/data/event',
+        path: '/admin/data',
         handler: countEvent
     },
     {

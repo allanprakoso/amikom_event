@@ -4,18 +4,20 @@ const connection = require("../models/db_connection");
 
 const countEvent = async (request, h) => {
 
-    const countKategori = await connection.awaitQuery(`
-        SELECT kategori.id, kategori.nama as kategori, 
-        COUNT(events.id) as \`jumlah event\` from kategori 
-        inner join events on events.idKategori = kategori.id 
-        GROUP BY kategori.id, kategori.nama`)
-
-    const allEvent = await connection.awaitQuery(`
-    SELECT COUNT(id) as jml from events`)
+    const Workshop = await connection.awaitQuery('SELECT count(id) as jml from events where idKategori=1');
+    const Webinar = await connection.awaitQuery('SELECT count(id) as jml from events where idKategori=2');
+    const Bootcamp = await connection.awaitQuery('SELECT count(id) as jml from events where idKategori=3');
+    const allEvent = await connection.awaitQuery(`SELECT COUNT(id) as jml from events`)
+    const countVisitor = await connection.awaitQuery(`
+    SELECT DISTINCT DATE_FORMAT(CAST(datetime as DATE), \"%a\") AS day , 
+    COUNT(ip) as visitor FROM \`visitor\` GROUP BY day ORDER BY day DESC LIMIT 7;`)
 
     const countAll = {
-        "allEvent": allEvent[0].jml,
-        "kategori": countKategori
+        "allEvent": {jumlah: allEvent[0].jml, presentase : 100},
+        "workshop": {jumlah: Workshop[0].jml, presentase : Number(Workshop[0].jml)/Number(allEvent[0].jml)*100},
+        "webinar":  {jumlah: Webinar[0].jml, presentase : Number(Webinar[0].jml)/Number(allEvent[0].jml)*100},
+        "bootcamp": {jumlah: Bootcamp[0].jml, presentase : Number(Bootcamp[0].jml)/Number(allEvent[0].jml)*100},
+        "visitors": countVisitor
     }
 
     return h.response(countAll);
@@ -23,9 +25,8 @@ const countEvent = async (request, h) => {
 
 const getDataVisitor = async (request, h) => {
     const countVisitor = await connection.awaitQuery(`
-    SELECT DISTINCT CAST(datetime as DATE) as tanggal , COUNT(ip) as visitor FROM 
-    \`visitor\` GROUP BY tanggal ORDER BY tanggal DESC LIMIT 7`)
-
+    SELECT DISTINCT DATE_FORMAT(CAST(datetime as DATE), \"%a\") AS day , 
+    COUNT(ip) as visitor FROM \`visitor\` GROUP BY day ORDER BY day DESC LIMIT 7;`)
     return h.response(countVisitor)
 }
 
