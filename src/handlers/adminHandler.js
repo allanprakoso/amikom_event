@@ -13,10 +13,10 @@ const countEvent = async (request, h) => {
     COUNT(ip) as visitor FROM \`visitor\` GROUP BY day ORDER BY day DESC LIMIT 7;`)
 
     const countAll = {
-        "allEvent": {jumlah: allEvent[0].jml, presentase : 100},
-        "workshop": {jumlah: Workshop[0].jml, presentase : Number(Workshop[0].jml)/Number(allEvent[0].jml)*100},
-        "webinar":  {jumlah: Webinar[0].jml, presentase : Number(Webinar[0].jml)/Number(allEvent[0].jml)*100},
-        "bootcamp": {jumlah: Bootcamp[0].jml, presentase : Number(Bootcamp[0].jml)/Number(allEvent[0].jml)*100},
+        "allEvent": {jumlah: allEvent[0].jml, persentase : 100},
+        "workshop": {jumlah: Workshop[0].jml, persentase : Number(Workshop[0].jml)/Number(allEvent[0].jml)*100},
+        "webinar":  {jumlah: Webinar[0].jml, persentase : Number(Webinar[0].jml)/Number(allEvent[0].jml)*100},
+        "bootcamp": {jumlah: Bootcamp[0].jml, persentase : Number(Bootcamp[0].jml)/Number(allEvent[0].jml)*100},
         "visitors": countVisitor
     }
 
