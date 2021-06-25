@@ -1,447 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amivents Email</title>
     <style>
+      @import url(https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap);
+      :root {
+          --darkPurple: #362A50;
+          --purple: #6B3597;
+          --orange: #FC892C;
+          --yelow: #FCB52C;
+      }
+      
+      body {
+          color: #362A50;
+          font-family: Mulish;
+          font-style: normal;
+          background-color: #FAFAFC;
+      }
+      
+      h1 {
+          font-weight: 700;
+          font-size: 2em;
+          line-height: 0.5em;
+          text-align: center;
+      }
+      
+      p {
+          font-weight: 700;
+          font-size: 1.5em;
+      }
+    
+      a{
+          text-decoration: none;
+      }
+      
+      .wrapper {
+          width: 100%;
+          max-width: 400px;
+          padding: 3em;
+          margin: auto;    
+          background-color: white;
+          
+      }
+      img.logo {
+          display: block;
+          margin: 0 auto;    
+      }
+      .ticket{
+          margin-top: 3em;
+      }
+      .event-banner{
+          max-width: 400px;
+          background-size: 100% 100%;
+          margin-bottom: 1.5em;
+      }
+      .ket-event span{    
+          margin-right: 20px;
+          font-size: 16px;
+          font-weight: 400;
+          color: #362A50;
+          opacity: 0.6;
+      }
+      .ket-event span img{
+          width: 20px;
+          height: 20px;
+          vertical-align: middle;
+          padding-right: 4px;
+      }
+      .ket-event{
+          margin-bottom: 2em;
+      }
+      
+      .event-link a{
+          color: white;
+          font-size: 16px;
+          font-weight: 700;
+      }
+      .event-link:hover{
+          background-color: #362A50;
+      }
+      .event-link{
+          text-align: center;
+          margin-top: 4em;
+          background-color: #6B3597;
+          border: none;
+          text-align: center;
+         padding: 12px 0;
+      }
+      @media only screen and (min-width: 768px){
+          .wrapper, .event-banner, .event-link, h1, p{
+              width: 600px;
+              max-width: 600px;
+          }
+      }
+          </style>
+</head>
 
-        .heading {
-  text-align: center;
-}
-
-.body {
-  background-color: #e5e5e5;
-  font-family: 'Mulish', sans-serif;
-}
-
-.text-span {
-  position: static;
-  text-align: center;
-}
-
-.div-block {
-  margin-top: 0px;
-  margin-right: 300px;
-  margin-left: 300px;
-  padding: 20px 40px 40px;
-  background-color: #fff;
-}
-
-.heading-2 {
-  color: #362a50;
-}
-
-.div-block-2 {
-  text-align: center;
-}
-
-.div-block-3 {
-  margin-top: 20px;
-  font-family: 'Mulish', sans-serif;
-}
-
-.div-block-4 {
-  margin-top: 20px;
-  font-family: 'Mulish', sans-serif;
-}
-
-.div-block-5 {
-  margin-top: 20px;
-  font-family: 'Mulish', sans-serif;
-}
-
-.link-3 {
-  text-decoration: none;
-}
-
-.heading-3 {
-  font-family: 'Mulish', sans-serif;
-  color: #362a50;
-}
-
-.paragraph {
-  margin-top: 20px;
-  margin-bottom: 15px;
-  font-family: 'Mulish', sans-serif;
-  color: #28144d;
-  font-size: 14px;
-}
-
-.div-block-6 {
-  margin-right: 300px;
-  margin-left: 300px;
-  padding-right: 220px;
-  padding-left: 220px;
-  font-family: 'Mulish', sans-serif;
-}
-
-.text-block-2 {
-  color: #362a50;
-}
-
-.image {
-  margin-top: 20px;
-}
-
-.section {
-  margin-left: 0px;
-  padding: 20px 40px;
-  background-color: #362a50;
-  font-family: 'Mulish', sans-serif;
-  text-align: center;
-}
-
-.section-2 {
-  margin-top: 30px;
-}
-
-.text-block-5 {
-  display: block;
-  margin-top: 15px;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  color: #fff;
-  text-align: center;
-}
-
-.text-block-6 {
-  display: block;
-  margin-top: 15px;
-  color: #fff;
-  text-align: center;
-}
-
-.link-4 {
-  text-decoration: none;
-}
-
-.section-3 {
-  padding-left: 0px;
-  text-align: center;
-}
-
-.div-block-8 {
-  -o-object-fit: scale-down;
-  object-fit: scale-down;
-}
-
-.column {
-  text-align: left;
-}
-
-.columns {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.image-3 {
-  display: inline-block;
-}
-
-.image-4 {
-  display: block;
-}
-
-@media screen and (max-width: 991px) {
-  .heading {
-    border-radius: 0px;
-    background-color: hsla(0, 0%, 100%, 0);
-    font-family: 'Mulish', sans-serif;
-    color: #6b3597;
-    font-size: 28px;
-    text-align: center;
-  }
-
-  .body {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ff3d3d;
-    background-color: #e5e5e5;
-    color: #f04f4f;
-  }
-
-  .div-block {
-    margin-top: 10px;
-    margin-right: 60px;
-    margin-left: 60px;
-    padding: 40px 30px;
-    background-color: #fff;
-  }
-
-  .heading-2 {
-    margin-top: 0px;
-    margin-bottom: 25px;
-    font-family: 'Mulish', sans-serif;
-    color: #362a50;
-    font-size: 28px;
-  }
-
-  .link {
-    text-align: left;
-  }
-
-  .link-2 {
-    text-decoration: none;
-  }
-
-  .div-block-2 {
-    margin-top: 50px;
-    text-align: center;
-  }
-
-  .div-block-3 {
-    margin-top: 30px;
-  }
-
-  .div-block-4 {
-    margin-top: 20px;
-  }
-
-  .div-block-5 {
-    margin-top: 20px;
-  }
-
-  .link-3 {
-    font-family: 'Mulish', sans-serif;
-    text-decoration: none;
-  }
-
-  .heading-3 {
-    color: #362a50;
-    text-align: center;
-  }
-
-  .text-block {
-    overflow: visible;
-    text-align: center;
-  }
-
-  .paragraph {
-    margin-top: 32px;
-    font-family: 'Mulish', sans-serif;
-    color: #28144d;
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .div-block-6 {
-    margin-right: 60px;
-    margin-left: 60px;
-    padding-right: 100px;
-    padding-left: 100px;
-    text-align: center;
-  }
-
-  .button {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    text-align: center;
-  }
-
-  .div-block-7 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  .text-block-2 {
-    font-family: 'Mulish', sans-serif;
-    color: #28144d;
-    font-weight: 700;
-  }
-
-  .text-block-3 {
-    font-family: 'Mulish', sans-serif;
-    color: #28144d;
-  }
-
-  .text-block-4 {
-    font-family: 'Mulish', sans-serif;
-    color: #28144d;
-  }
-
-  .image {
-    margin-top: 20px;
-  }
-
-  .button-2 {
-    margin-top: 20px;
-    border-radius: 10px;
-    background-color: #fcb52c;
-    font-family: 'Mulish', sans-serif;
-    font-size: 14px;
-  }
-
-  .section {
-    padding: 20px 70px;
-    background-color: #362a50;
-    text-align: center;
-  }
-
-  .section-2 {
-    margin-top: 20px;
-  }
-
-  .image-2 {
-    max-width: 20%;
-    text-align: center;
-  }
-
-  .text-block-5 {
-    margin-top: 13px;
-    font-family: 'Mulish', sans-serif;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-  }
-
-  .text-block-6 {
-    margin-top: 9px;
-    font-family: 'Mulish', sans-serif;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-  }
-
-  .text-block-7 {
-    width: auto;
-    font-family: 'Mulish', sans-serif;
-    color: rgba(54, 42, 80, 0.26);
-    font-size: 13px;
-    font-weight: 400;
-  }
-
-  .link-4 {
-    font-family: 'Mulish', sans-serif;
-    font-size: 13px;
-    text-decoration: none;
-  }
-}
-
-@media screen and (max-width: 479px) {
-  .div-block {
-    margin-right: 0px;
-    margin-left: 0px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  .div-block-6 {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-}
-    </style>
-  </head>
-
-  <body>
-
-    <body class="body">
-      <div class="section-3">
-        <div class="div-block-6"><img
-            src="https://ik.imagekit.io/wjgpds2jglv/Assets/amivent1_OdDtAGe2G.png"
-            loading="lazy" alt="" class="image">
-          <h2 class="heading-3">{{nama}},<br>you&#x27;ve got tickets!</h2>
-          <p class="paragraph">This event will be hosted online. Check
-            the event page for all the information you need to join.</p>
-          <a href="{{urlEvent}}" class="button-2 button">View the event</a>
+<body>
+    <main class="wrapper">
+        <div class="banner">
+            <img src="https://ik.imagekit.io/wjgpds2jglv/Assets/amivent1_OdDtAGe2G.png" alt="" class="logo">
+            <h1>{{nama}}</h1>
+            <h1>you've got tickets!</h1>
         </div>
-      </div>
-      <div class="section-2">
-        <div class="div-block">
-          <h3 class="heading-2">{{judul}}</h3><img src="{{urlImage}}"
-            loading="lazy" height="" alt="">
-          <div class="div-block-8">
-            <div class="div-block-3">
-              <table>
-                <tr>
-                  <td><img
-                      src="https://ik.imagekit.io/wjgpds2jglv/Assets/clock_circle_bbwTyr1vF.png"
-                      loading="lazy" width="16" alt=""></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <div class="text-block-2">1 x Ticket</div>
-                    <div class="text-block-7">Order total :
-                      free</div>
-                  </td>
-                </tr>
-              </table>
+        <div class="ticket">
+            <img src="{{urlImage}}" alt="" class="event-banner">
+            <p class="title">{{judul}}</p>
+            <div class="ket-event">                
+                <span><img src="https://ik.imagekit.io/wjgpds2jglv/Assets/calendar__FADyxJPk.png">{{date}}</span>
+                <span><img src="https://ik.imagekit.io/wjgpds2jglv/Assets/clock_YW-1BlAX9RH0.png">{{time}} WIB</span>
+                <span><img src="https://ik.imagekit.io/wjgpds2jglv/Assets/Category_i_gmNbWuR.png"> Webinar</span>
             </div>
-          </div>
-          <div class="div-block-4">
-            <table>
-              <tr>
-                <td><img
-                    src="https://ik.imagekit.io/wjgpds2jglv/Assets/clock_circle_bbwTyr1vF.png"
-                    loading="lazy" width="16" alt=""></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <div class="text-block-2">{{tanggal}}</div>
-                  <a href="https://calendar.google.com/calendar/u/0/r/eventedit?text={{judul}}&dates={{cal}}/{{cal}}&details=For+details,+go+here:{{urlEvent}}&location=Online+Event&pli=1&sf=true" class="link-4">Add to Google
-                    Calendar</a>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="div-block-5">
-            <table>
-              <tr>
-                <td><img
-                    src="https://ik.imagekit.io/wjgpds2jglv/Assets/clock_circle_bbwTyr1vF.png"
-                    loading="lazy" width="16" alt=""></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <div class="text-block-2">Location</div>
-                  <div class="text-block-7">Online Event</div>
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="div-block-2">
-            <a href="{{urlEvent}}" class="link-3">View event details</a>
-          </div>
+            <div>
+                <div>Add to <a href="#">Google Calendar</a></div>
+                <div class="event-link"><a href="#">Go to event</a></div>
+            </div>
         </div>
-
-      </div>
-    </div>
-    <div class="section"><img
-        src="https://ik.imagekit.io/wjgpds2jglv/Assets/amivent2_uE1XUpTPhNj.png"
-        loading="lazy" alt="" class="image-2">
-      <div class="text-block-5">Amikom - Final Project - Pemrograman WEB
-        2021</div>
-      <div class="text-block-6">Caroline | Mega | Merlita | Allan | Wisnu</div>
-    </div>
-  </body>
+    </main>
+</body>
 
 </html>

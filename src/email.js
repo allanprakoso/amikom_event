@@ -27,7 +27,7 @@ var readHTMLFile = function (path, callback) {
 
 
 
-async function sendEmail(nama, email, urlImage, judul, tanggal, urlEvent, googleCal) {
+async function sendEmail(nama, email, urlImage, judul, date, time, urlEvent) {
 
   readHTMLFile(__dirname + '/public/apidoc.html', function (err, html) {
     var template = handlebars.compile(html);
@@ -35,9 +35,9 @@ async function sendEmail(nama, email, urlImage, judul, tanggal, urlEvent, google
       nama: nama.split(" ")[0],
       urlImage: urlImage,
       judul: judul,
-      tanggal: tanggal,
+      date : date, 
+      time : time,
       urlEvent: urlEvent,
-      cal: googleCal
     };
 
     var htmlToSend = template(replacements);

@@ -8,6 +8,7 @@
     "@hapi/inert": "^6.0.3",
     "fs": "0.0.1-security",
     "handlebars": "^4.7.7",
+    "imagekit": "^3.1.2",
     "mysql": "^2.18.1",
     "mysql-await": "^2.1.8",
     "nanoid": "^3.1.23",

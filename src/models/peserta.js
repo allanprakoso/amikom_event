@@ -15,16 +15,8 @@ Peserta.create = async (newPeserta) => {
         let result = await connection.awaitQuery(`INSERT INTO peserta SET ?`, newPeserta);
 
         if (result.insertId !== undefined) {
-            dataEvent = await connection.awaitQuery(`SELECT judul, urlEvent, tanggal, urlImage from events where id=${newPeserta.idEvent}`);
-
-            var d = dataEvent[0].tanggal;
-            d = new Date(d.getTime() - 3000000);
-            var date_format_str = d.getFullYear().toString() + ((d.getMonth() + 1).toString().length == 2 ? (d.getMonth() + 1).toString() : "0" + 
-            (d.getMonth() + 1).toString()) + (d.getDate().toString().length == 2 ? d.getDate().toString() : "0" + d.getDate().toString()) + "T" + 
-            (d.getHours().toString().length == 2 ? d.getHours().toString() : "0" + d.getHours().toString()) + ((parseInt(d.getMinutes() / 5) * 
-            5).toString().length == 2 ? (parseInt(d.getMinutes() / 5) * 5).toString() : "0" + (parseInt(d.getMinutes() / 5) * 5).toString()) + "00Z";
-            
-            sendEmail(newPeserta.nama, newPeserta.email, dataEvent[0].urlImage, dataEvent[0].judul, dataEvent[0].tanggal, dataEvent[0].urlEvent, date_format_str);
+            dataEvent = await connection.awaitQuery(`SELECT judul, urlImage, urlEvent, DATE_FORMAT(CAST(tanggal as DATE), "%a, %d %b") AS date, DATE_FORMAT(CAST(tanggal as TIME), "%H.%i") AS time FROM \`events\` WHERE id=${newPeserta.idEvent}`);
+            sendEmail(newPeserta.nama, newPeserta.email, dataEvent[0].urlImage, dataEvent[0].judul, dataEvent[0].date, dataEvent[0].time, dataEvent[0].urlEvent);
         }
         return result.insertId;
     } catch (error) {
