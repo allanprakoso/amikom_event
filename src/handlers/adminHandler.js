@@ -9,7 +9,7 @@ const countEvent = async (request, h) => {
     const Bootcamp = await connection.awaitQuery('SELECT count(id) as jml from events where idKategori=3');
     const allEvent = await connection.awaitQuery(`SELECT COUNT(id) as jml from events`)
     const countVisitor = await connection.awaitQuery(`
-    SELECT DISTINCT CAST(datetime AS DATE) AS datetime, DATE_FORMAT(CAST(datetime as DATE), \"%a\") AS day, COUNT(ip) as visitor FROM visitor GROUP BY datetime,day ORDER BY datetime DESC LIMIT 7;`)
+    SELECT DISTINCT CAST(datetime AS DATE) AS tanggal, DATE_FORMAT(CAST(datetime as DATE), \"%a\") AS day, COUNT(ip) as visitor FROM visitor GROUP BY tanggal,day ORDER BY tanggal DESC LIMIT 7;`)
 
     const countAll = {
         "allEvent": { jumlah: allEvent[0].jml, persentase: 100 },
