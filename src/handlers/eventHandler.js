@@ -1,3 +1,4 @@
+const { top3 } = require("../models/event");
 const Event = require("../models/event");
 
 const addEvent = async (request, h) => {
@@ -128,4 +129,10 @@ const updateEventById = async (request, h) => {
     return response;
 };
 
-module.exports = { addEvent, getAllEvent, getEventById, updateEventById, deleteEventById };
+const getTop3 = async (request, h) =>{
+    const data = await Event.top3();
+
+    return h.response(data);
+}
+
+module.exports = { addEvent, getAllEvent, getEventById, updateEventById, deleteEventById, getTop3 };

@@ -1,6 +1,6 @@
 const { countEvent, getDataVisitor, postDataVisitor, getAllParticipants } = require("../handlers/adminHandler.js");
 const getAuth = require("../handlers/auth.js");
-const { addEvent, getAllEvent, getEventById ,updateEventById, deleteEventById } = require("../handlers/eventHandler.js");
+const { addEvent, getAllEvent, getEventById ,updateEventById, deleteEventById, getTop3 } = require("../handlers/eventHandler.js");
 const { addKategori, getAllKategori, getKategoriById, deleteKategoriById, updateKategoriById } = require("../handlers/kategoriHandler.js");
 const { getAllPeserta, getPesertaById, addPeserta } = require("../handlers/pesertaHandler.js");
 const { addUsers, get } = require("../handlers/usersHandler.js");
@@ -40,6 +40,11 @@ const routes = [
         method: 'GET',
         path: '/event',
         handler: getAllEvent
+    },
+    {
+        method: 'GET',
+        path: '/event/top3',
+        handler: getTop3
     },
     {
         method: 'GET',
