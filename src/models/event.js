@@ -29,18 +29,18 @@ Event.getall = async (param, admin) => {
     } else {
         if (param == 0) {
             return await connection.awaitQuery(`
-            SELECT id, judul, deskripsi, DATE_FORMAT(CAST(tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(tanggal as TIME), "%H:%i") AS jam , urlImage , idKategori
+            SELECT id, judul, deskripsi, DATE_FORMAT(CAST(tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(tanggal as TIME), "%H:%i") AS jam , urlImage , idKategori, (SELECT nama FROM kategori WHERE id =idKategori) AS kategori
             FROM events WHERE id NOT IN 
             (select id from events where tanggal > (SELECT NOW() AS DATETIME))`);
         }
         if (param == 1) {
             return await connection.awaitQuery(`
-            SELECT id, judul, deskripsi, DATE_FORMAT(CAST(tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(tanggal as TIME), "%H:%i") AS jam , urlImage , idKategori
+            SELECT id, judul, deskripsi, DATE_FORMAT(CAST(tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(tanggal as TIME), "%H:%i") AS jam , urlImage , idKategori, (SELECT nama FROM kategori WHERE id =idKategori) AS kategori
             FROM events  WHERE tanggal > (SELECT NOW() AS DATETIME)`);
         }
         else {
             return await connection.awaitQuery(`
-            SELECT id, judul, deskripsi, DATE_FORMAT(CAST(tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(tanggal as TIME), "%H:%i") AS jam, urlImage , idKategori
+            SELECT id, judul, deskripsi, DATE_FORMAT(CAST(tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(tanggal as TIME), "%H:%i") AS jam, urlImage , idKategori, (SELECT nama FROM kategori WHERE id =idKategori) AS kategori
             FROM events`);
         }
     }
