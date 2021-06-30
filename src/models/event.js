@@ -103,7 +103,7 @@ Event.listEventAdmin = async () => {
 
 Event.top3 = async ()=> {
     return await connection.awaitQuery(`
-    SELECT events.id, events.judul, events.urlImage , DATE_FORMAT(CAST(events.tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(events.tanggal as TIME), "%H:%i") AS jam ,
+    SELECT events.id, events.judul, events.deskripsi, events.urlImage , DATE_FORMAT(CAST(events.tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(events.tanggal as TIME), "%H:%i") AS jam ,
     kategori.nama as kategori, events.idKategori , 
     (SELECT COUNT(id) from peserta where peserta.idEvent=events.id) as peserta 
     FROM events INNER JOIN kategori ON events.idKategori = kategori.id ORDER BY tanggal DESC LIMIT 3`);
