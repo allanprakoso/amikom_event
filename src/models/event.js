@@ -21,6 +21,24 @@ Event.create = async (newEvent) => {
 
 Event.getall = async (param, admin) => {
     if (admin) {
+        if(param==0){
+            return await connection.awaitQuery(`
+        SELECT events.id, events.judul,events.deskripsi, events.urlImage , DATE_FORMAT(CAST(events.tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(events.tanggal as TIME), "%H:%i") AS jam ,
+        kategori.nama as kategori, events.idKategori , 
+        (SELECT COUNT(id) from peserta where peserta.idEvent=events.id) as peserta 
+        FROM events INNER JOIN kategori ON events.idKategori = kategori.id 
+        Where events.id NOT IN (select id from events where tanggal > (SELECT NOW() AS DATETIME))
+        ORDER BY tanggal DESC`);
+        }
+        if(param==1){
+            return await connection.awaitQuery(`
+        SELECT events.id, events.judul,events.deskripsi, events.urlImage , DATE_FORMAT(CAST(events.tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(events.tanggal as TIME), "%H:%i") AS jam ,
+        kategori.nama as kategori, events.idKategori , 
+        (SELECT COUNT(id) from peserta where peserta.idEvent=events.id) as peserta 
+        FROM events INNER JOIN kategori ON events.idKategori = kategori.id 
+        Where events.tanggal > (SELECT NOW() AS DATETIME)
+        ORDER BY tanggal DESC`);
+        }
         return await connection.awaitQuery(`
         SELECT events.id, events.judul,events.deskripsi, events.urlImage , DATE_FORMAT(CAST(events.tanggal as DATE), "%c-%d-%Y") AS tanggal , DATE_FORMAT(CAST(events.tanggal as TIME), "%H:%i") AS jam ,
         kategori.nama as kategori, events.idKategori , 

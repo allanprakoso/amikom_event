@@ -35,7 +35,7 @@ const addEvent = async (request, h) => {
 const getAllEvent = async (request, h) => {
     const { search, upcoming, kategori } = request.query;
     const {admin} = request.params;
-    const data = (admin=='admin') ? await Event.getall(null,true) : (upcoming==1) ? await Event.getall(1) : (upcoming==0) ? await Event.getall(0) : await Event.getall(); 
+    const data = (admin=='admin') ? await Event.getall(upcoming,true) : (upcoming==1) ? await Event.getall(1) : (upcoming==0) ? await Event.getall(0) : await Event.getall(); 
     eventFiltered = data;
     if (search !== undefined) {
         var cari = search.split(" ");
